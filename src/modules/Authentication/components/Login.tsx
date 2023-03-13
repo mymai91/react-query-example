@@ -45,15 +45,19 @@ const Login: FC = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label>Email</label>
-          <input {...register("email")} />
+          <input {...register("email")} data-testid="login-email-input" />
           {errors.email && <p>{errors.email?.message}</p>}
         </div>
         <div style={{ marginBottom: 10 }}>
           <label>Password</label>
-          <input {...register("password")} type="password" />
+          <input
+            {...register("password")}
+            type="password"
+            data-testid="login-password-input"
+          />
           {errors.password && <p>{errors.password?.message}</p>}
         </div>
-        <input type="submit" />
+        <input type="submit" name="submit" data-testid="login-submit-btn" />
       </form>
     </div>
   );
