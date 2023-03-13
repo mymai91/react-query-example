@@ -7,6 +7,7 @@ const routes = {
   HOME_PAGE: "/",
   LOGIN_PAGE: "/login",
   CREATE_CARD_PAGE: "/createcard",
+  CARDS_PAGE: "/cards",
 };
 
 const publicRoutes = [
@@ -25,6 +26,10 @@ const privateRoutes = [
   {
     path: routes.CREATE_CARD_PAGE,
     element: lazy(() => import("../modules/Card/components/CreateCard")),
+  },
+  {
+    path: routes.CARDS_PAGE,
+    element: lazy(() => import("../modules/Card/components/Cards")),
   },
 ];
 

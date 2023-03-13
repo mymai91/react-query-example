@@ -8,6 +8,7 @@ export const loginApi = async ({ email, password }: LoginParams) => {
       password,
     },
   });
-
-  return res.data;
+  console.log("res", res);
+  console.log("res", res);
+  return { ...res.data, token: res.headers.authorization };
 };

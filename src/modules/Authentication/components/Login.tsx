@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { LoginParams } from "../models/login";
 import useLogin from "../hooks/useLogin";
+import { useNavigate } from "react-router-dom";
 
 const LoginSchema = yup.object().shape({
   email: yup.string().required(),
@@ -19,6 +20,7 @@ const Login: FC = () => {
     resolver: yupResolver(LoginSchema),
   });
 
+  const navigate = useNavigate();
   const { mutate: loginMutate } = useLogin();
   const onSubmit = useCallback(
     (data: LoginParams) => {
@@ -28,9 +30,13 @@ const Login: FC = () => {
       //     // router.push(`/cards/${res.card.slug}`);
       //   },
       // });
-      loginMutate(data);
+      loginMutate(data, {
+        onSuccess: () => {
+          navigate("/cards");
+        },
+      });
     },
-    [loginMutate]
+    [loginMutate, navigate]
   );
 
   return (

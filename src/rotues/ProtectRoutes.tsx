@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 
 export const ProtectedRoute = ({ children }: any) => {
   const isUser = () => {
-    return false;
+    return !!sessionStorage.getItem("@apptest:AuthToken");
   };
 
   if (!isUser()) {
