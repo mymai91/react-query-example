@@ -5,3 +5,9 @@ export const getListCards = async () => {
 
   return res.data;
 };
+
+export const getCard = async (slug: string) => {
+  const res = await authApi().get(`/cards/${slug}`);
+
+  return res.data;
+};
