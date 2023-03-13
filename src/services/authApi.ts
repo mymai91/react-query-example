@@ -15,9 +15,9 @@ const authApi = () => {
   // Add a request interceptor to instance
   instance.interceptors.request.use(
     (config) => {
-      const token = sessionStorage.getItem("authToken");
+      const token = sessionStorage.getItem("@apptest:AuthToken");
       // eslint-disable-next-line no-param-reassign
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `${token}`;
 
       return config;
     },
